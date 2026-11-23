@@ -1,37 +1,84 @@
+<div align="center">
+
+<img src="AnyConvert150.png" alt="AnyConvert logo" width="110">
+
 # AnyConvert
 
-Offline Windows 11 x64 file converter with a File Explorer submenu and a compact progress window.
+**Right-click. Convert. Done.**
 
-## Build
+Offline file conversion in the Windows 11 right-click menu.<br>
+PDF to Word, Word to PDF, slides to images and more, all on your own PC.
 
-Install Python x64, Microsoft C++ Build Tools (Desktop development with C++ and Windows 11 SDK), and Inno Setup. From PowerShell in the extracted repository:
+[![Latest release](https://img.shields.io/github/v/release/AaryaKrishna19/AnyConvert?style=for-the-badge&color=4a63ff)](https://github.com/AaryaKrishna19/AnyConvert/releases/latest)
+![Windows 11 x64](https://img.shields.io/badge/Windows-11%20x64-0078D4?style=for-the-badge)
+![Offline](https://img.shields.io/badge/Works-offline-17b26a?style=for-the-badge)
 
-```powershell
-py -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\build-setup.ps1
-```
+[**Download for Windows**](https://github.com/AaryaKrishna19/AnyConvert/releases/download/v1.4.0/AnyConvertSetup.exe) · [Website](https://aaryakrishna19.github.io/AnyConvert/) · [Report an issue](https://github.com/AaryaKrishna19/AnyConvert/issues)
 
-Run dist/AnyConvertSetup.exe and right-click a supported file. The build needs internet and WinGet to stage the x64 LibreOffice engine and Microsoft VC++ runtime. Setup embeds both along with the frozen Python runtime and libraries. Allow several GB for staging. Build tools are only needed on the build PC. Test the finished installer offline on a clean x64 Windows 11 PC before publishing a release.
+</div>
 
-## Preview the progress window
+---
 
-To see the conversion window without building the installer, run this from the repository folder (it follows the Windows light or dark setting):
+## What is AnyConvert?
 
-```powershell
-.\.venv\Scripts\python.exe project_convert_app.py docx C:\path\to\file.pdf
-```
+AnyConvert adds a **Convert** option to the main Windows 11 right-click menu. Select a file, choose the format you want, and the converted copy is saved right next to the original. There is no app to open and no website to visit.
 
-Run it with no arguments to pick the file and format inside the window.
+It was built for people who regularly need things like PDF to Word or PDF to image, and who don't want to upload private documents to an online converter.
 
-## Everyday conversions
+## Download
 
-PDF offers Word, PNG, JPEG and Excel tables. Word offers A4 PDF. PowerPoint offers PDF and slide PNGs. Excel offers PDF and CSV (one file per sheet). CSV opens as an Excel workbook. Images offer A4 PDF and common image formats. Legacy Office and OpenDocument files also offer migration to their modern Office equivalent. Table extraction requires detectable tables; scanned PDFs need an OCR workflow for editable text.
+1. Download [**AnyConvertSetup.exe**](https://github.com/AaryaKrishna19/AnyConvert/releases/download/v1.4.0/AnyConvertSetup.exe).
+2. Run it and follow the installer.
 
-## Publish the download website
+Older versions and release notes are on the [releases page](https://github.com/AaryaKrishna19/AnyConvert/releases).
 
-Commit the extracted files at the repository root. In Settings → Pages, choose Deploy from a branch, main, /(root). Use the standard Jekyll Pages build with the included _config.yml and index.html. Upload dist/AnyConvertSetup.exe as a release asset named AnyConvertSetup.exe and publish it as the latest release. The download and release notes links use this repository's GitHub metadata, including on a custom domain.
+The installer bundles the conversion engines and the runtime they need, so there is nothing else to install.
 
-## Source repository
+**Requirements:** Windows 11, 64-bit (x64).
 
-Upload the extracted source files to GitHub. Keep generated EXEs and installers in Releases. The build uses a local development signing certificate for Explorer registration. Keep its private key on the build machine.
+## How to use it
+
+1. Right-click a supported file in File Explorer.
+2. Hover **AnyConvert** in the main context menu. You don't need to open "Show more options".
+3. Choose a format, for example **Convert to Word**.
+4. A small progress window appears in the centre of the screen and closes when the job is done.
+5. Find the converted file beside the original.
+
+## Supported conversions
+
+| From | Convert to | Notes |
+| --- | --- | --- |
+| PDF | Word (.docx) | Rebuilds the page in Word format |
+| PDF | Excel (.xlsx) | Detectable tables only |
+| PDF | PNG or JPEG | Image output |
+| Word (.docx) | PDF | A4 page size |
+| PowerPoint (.pptx) | PDF | A4 page size |
+| PowerPoint (.pptx) | PNG | One image per slide |
+| Excel (.xlsx) | PDF | A4 page size |
+| Excel (.xlsx) | CSV | One file per sheet |
+| CSV | Excel (.xlsx) | |
+| JPG or PNG | PDF | A4 page size |
+| JPG or PNG | The other image format | JPG to PNG, or PNG to JPG |
+
+## Privacy
+
+AnyConvert works entirely on your computer. Files are read from your disk, converted locally and saved next to the original. Nothing is uploaded.
+
+## Good to know
+
+- **Layouts can shift.** Converting a PDF to Word rebuilds the page, so complex layouts may need a quick touch-up. AnyConvert does not promise a pixel-perfect copy.
+- **Best with text-based PDFs.** Scanned pages are not run through text recognition (OCR), so they stay as images.
+- **PDF to Excel finds tables, not magic.** It picks up the tables it can detect. Pages without clear tables give little back.
+- **Not every format is supported.** AnyConvert covers the conversions listed above.
+
+## Feedback
+
+Found a bug or have a file that converts badly? [Open an issue](https://github.com/AaryaKrishna19/AnyConvert/issues) and describe the file type and what went wrong. Please don't attach private documents.
+
+---
+
+<div align="center">
+
+Made by **Aarya Softwares**
+
+</div>
