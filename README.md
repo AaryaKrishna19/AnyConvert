@@ -1,27 +1,63 @@
 # AnyConvert
 
-Offline Windows 11 x64 file converter with a File Explorer submenu and a compact progress window.
+**AnyConvert** is an offline file converter for Windows 11 (x64) that integrates directly into the Windows File Explorer context menu and provides a compact progress window for quick, local document and image conversions.
 
-## Build
+---
 
-Install Python x64, Microsoft C++ Build Tools (Desktop development with C++ and Windows 11 SDK), and Inno Setup. From PowerShell in the extracted repository:
+## Key Features
+
+* **100% Offline Processing:** All conversions run locally with no internet connection or cloud uploads required.
+* **File Explorer Integration:** Convert supported files directly via a dedicated right-click submenu.
+* **Lightweight UI:** Displays a compact progress window during active conversions.
+* **Broad Format Support:** Handles PDFs, modern and legacy Office documents, OpenDocument formats, CSVs, and common raster images.
+
+---
+
+## Installation
+
+1. Download the latest **`AnyConvertSetup.exe`** installer from the [**Releases**](../../releases) page.
+2. Run `AnyConvertSetup.exe` to install AnyConvert and register the File Explorer context menu.
+3. Right-click any supported file in File Explorer and select your target format from the **AnyConvert** submenu.
+
+> **Optional Dependency (LibreOffice):** To convert Word, PowerPoint, OpenDocument, or legacy Office files, install [LibreOffice](https://www.libreoffice.org/). AnyConvert automatically detects `soffice.exe` on the system `PATH` or in the default LibreOffice installation directory. Python and C++ build tools are **not** required to run the installed application.
+
+---
+
+## Supported Conversions
+
+| Input Formats | Available Output Formats |
+| :--- | :--- |
+| **PDF** | DOCX (layout-preserved or fast text), XLSX (tables), PPTX (visual slides), TXT, PNG, JPEG, BMP, TIFF, WebP |
+| **DOCX, DOC, ODT, RTF, PPTX, PPT, ODP, XLSX, XLS, ODS** | A4 PDF, DOCX, PPTX, XLSX, TXT, PNG, JPEG, BMP, TIFF, WebP *(excludes same-format output)* |
+| **PNG, JPG/JPEG, BMP, TIFF/TIF, WebP, GIF** | A4 PDF, DOCX, PPTX, PNG, JPEG, BMP, TIFF, WebP *(excludes same-format output)* |
+| **CSV** | XLSX *(UTF-8 comma-separated text)* |
+| **XLSX** | CSV *(exported as one file per worksheet, in addition to the Office outputs above)* |
+
+### Conversion Behavior & Limitations
+
+* **Output Location:** Converted files are written to the same directory as the source file. Multi-page image exports generate one image file per page.
+* **Presentations:** Cross-format conversions to PowerPoint produce slides containing rendered page images.
+* **Tables & Spreadsheets:** PDF-to-Excel conversions (and conversions routed through PDF) require detectable table structures. Native XLSX-to-PDF and XLSX-to-Word conversions rely on a cell-value exporter, so charts and complex formulas may have limited fidelity.
+* **Text & Images:** TXT exports extract plain document text. Image-to-Word conversions embed the visual content directly and do not perform OCR.
+* **Legacy Office Formats:** Upgrades from legacy Word, Excel, and PowerPoint files are processed directly through LibreOffice.
+
+---
+
+## Building from Source
+
+### Prerequisites
+
+Install the following tools on your build machine:
+
+* **Python (x64)**
+* **Microsoft C++ Build Tools** *(include the **Desktop development with C++** workload and the **Windows 11 SDK**)*
+* **Inno Setup**
+
+### Build Steps
+
+Open PowerShell in the root directory of the repository and run:
 
 ```powershell
 py -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\build-setup.ps1
-```
-
-Run dist/AnyConvertSetup.exe and right-click a supported file. The build needs internet and WinGet to stage the x64 LibreOffice engine and Microsoft VC++ runtime. Setup embeds both along with the frozen Python runtime and libraries. Allow several GB for staging. Build tools are only needed on the build PC. Test the finished installer offline on a clean x64 Windows 11 PC before publishing a release.
-
-## Everyday conversions
-
-PDF offers Word, PNG, JPEG and Excel tables. Word offers A4 PDF. PowerPoint offers PDF and slide PNGs. Excel offers PDF and CSV (one file per sheet). CSV opens as an Excel workbook. Images offer A4 PDF and common image formats. Legacy Office and OpenDocument files also offer migration to their modern Office equivalent. Table extraction requires detectable tables; scanned PDFs need an OCR workflow for editable text.
-
-## Publish the download website
-
-Commit the extracted files at the repository root. In Settings → Pages, choose Deploy from a branch, main, /(root). Use the standard Jekyll Pages build with the included _config.yml and index.html. Upload dist/AnyConvertSetup.exe as a release asset named AnyConvertSetup.exe and publish it as the latest release. The download and release notes links use this repository's GitHub metadata, including on a custom domain.
-
-## Source repository
-
-Upload the extracted source files to GitHub. Keep generated EXEs and installers in Releases. The build uses a local development signing certificate for Explorer registration. Keep its private key on the build machine.
