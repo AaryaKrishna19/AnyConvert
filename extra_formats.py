@@ -1,4 +1,4 @@
-"""Additional offline conversion routes for AnyConvert."""
+﻿"""Additional offline conversion routes for AnyConvert."""
 import csv
 import os
 import shutil
