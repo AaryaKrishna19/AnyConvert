@@ -13,7 +13,7 @@ PDF to Word, Word to PDF, slides to images and more, all on your own PC.
 ![Windows 11 x64](https://img.shields.io/badge/Windows-11%20x64-0078D4?style=for-the-badge)
 ![Offline](https://img.shields.io/badge/Works-offline-17b26a?style=for-the-badge)
 
-[**Download for Windows**](https://github.com/AaryaKrishna19/AnyConvert/releases/latest) · [Website](https://aaryakrishna19.github.io/AnyConvert/) · [Report an issue](https://github.com/AaryaKrishna19/AnyConvert/issues)
+[**Download for Windows**](https://github.com/AaryaKrishna19/AnyConvert/releases/download/v1.4.0/AnyConvertSetup.exe) · [Website](https://aaryakrishna19.github.io/AnyConvert/) · [Report an issue](https://github.com/AaryaKrishna19/AnyConvert/issues)
 
 </div>
 
@@ -27,9 +27,10 @@ It was built for people who regularly need things like PDF to Word or PDF to ima
 
 ## Download
 
-1. Go to the [latest release](https://github.com/AaryaKrishna19/AnyConvert/releases/latest).
-2. Download **AnyConvertSetup.exe**.
-3. Run it and follow the installer.
+1. Download [**AnyConvertSetup.exe**](https://github.com/AaryaKrishna19/AnyConvert/releases/download/v1.4.0/AnyConvertSetup.exe).
+2. Run it and follow the installer.
+
+Older versions and release notes are on the [releases page](https://github.com/AaryaKrishna19/AnyConvert/releases).
 
 The installer bundles the conversion engines and the runtime they need, so there is nothing else to install.
 
