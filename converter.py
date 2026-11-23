@@ -1,4 +1,4 @@
-﻿import argparse
+import argparse
 import sys
 from getpass import getpass
 from io import BytesIO
