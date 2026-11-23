@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+build/
+dist/
+setup-build/
+modern-menu-build/
+*.pfx
+*.p12
+*.cer
+*.bak
+*.spec

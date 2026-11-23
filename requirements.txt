@@ -1,0 +1,8 @@
+PyMuPDF
+pdf2docx
+Pillow
+openpyxl
+python-docx
+reportlab
+python-pptx
+PyInstaller
